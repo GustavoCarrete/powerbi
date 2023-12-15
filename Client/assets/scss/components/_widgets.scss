@@ -1,0 +1,116 @@
+// --- ICONOS ---
+
+.icono-col-graph, .icono-col-keywords{
+    @include c-pointer;
+}
+
+// --- BOTONES ---
+
+.custom-btn{
+    border: none !important;
+    color: $white !important;
+}
+
+.primary-btn{
+    background-color: $primary !important;
+}
+
+.secondary-btn{
+    background-color: $secondary !important;   
+}
+
+.danger1-btn{
+    background-color: $danger-1 !important;
+}
+
+.danger2-btn{
+    background-color: $danger-2 !important;
+}
+
+.primary-btn:hover, 
+.danger-btn:hover,
+.light-btn:hover{
+    opacity: .9;
+}
+
+// --- BADGES ---
+
+.el-badge{
+    .el-button{
+        border-radius: 30px;
+        border: none;
+        font-weight: bold;
+    }
+    .el-button:hover, 
+    .el-button:active, 
+    .el-button:focus{
+        background-color: inherit;
+        color: inherit;
+        border: none;
+        cursor: default;
+    }
+    .el-badge__content{
+        cursor: default;
+    }
+}
+
+.badge-enproceso{
+    .el-button,
+    .el-button:hover, 
+    .el-button:active, 
+    .el-button:focus{
+        background-color: $blue-2;
+        color: $tertiary;
+    }
+    .el-badge__content{
+        background-color: $tertiary;
+    }
+}
+
+.badge-active{
+    .el-button,
+    .el-button:hover, 
+    .el-button:active, 
+    .el-button:focus{
+        background-color: $green-4;
+        color: $green-1;
+    }
+    .el-badge__content{
+        background-color: $green-1;
+    }
+}
+
+.badge-paused{
+    .el-button,
+    .el-button:hover, 
+    .el-button:active, 
+    .el-button:focus{
+        background-color: $red-6;
+        color: $danger-1;
+    }
+    .el-badge__content{
+        background-color: $danger-1;
+    }
+}
+
+.badge-deleted{
+    .el-button,
+    .el-button:hover, 
+    .el-button:active, 
+    .el-button:focus{
+        background-color: $gray-300;
+        color: $gray-600;
+    }
+    .el-badge__content{
+        background-color: $gray-500;
+    }
+}
+
+.badge.pill{
+    background-color: $secondary;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    display: inline;
+    position: absolute;
+    top: 8px;
+}

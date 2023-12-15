@@ -1,0 +1,58 @@
+#dialogChart{
+    .el-dialog {
+        .el-dialog__body {
+            padding-top: 30px;
+        }
+    }
+}
+.el-dialog {
+    .el-dialog__header{
+        background-color: $header-1;
+        padding: 15px 20px 15px;
+        .title-dialog{
+            font-size: 1.3rem;
+        }
+        .el-dialog__title{
+            color: $white;
+        }
+    }
+    .el-dialog__body {
+        max-height: 600px;
+        overflow-y: scroll !important;
+        padding-top: 0;
+        padding-left: 40px;
+    }
+}
+
+#confirm-dialog-delete, #confirm-dialog-pausar {
+    .el-dialog {
+        .el-dialog__header{
+            background-color: $danger-2;
+            .el-button{
+                background-color: transparent !important;
+            }
+        }
+    }
+}
+#confirm-dialog-update, #confirm-dialog-activar {
+    .el-dialog {
+        .el-dialog__header{
+            background-color: $yellow-1;
+            .el-button{
+                background-color: transparent !important;
+            }
+        }
+    }
+}
+.el-drawer {
+    .el-drawer__header {
+        background-color: $header-1;
+        padding: 15px 20px 15px;
+        .title-dialog{
+            font-size: 1.3rem;
+        }
+        .el-dialog__title{
+            color: $white;
+        }
+    }
+}

@@ -6,7 +6,7 @@ const cors = require("cors")
 
 const app = express();
 
-const routes = require('./routes/miranda.routes')
+const routes = require('./routes/google.routes')
 
 app.use(bodyParser.json())
 app.use(cors())

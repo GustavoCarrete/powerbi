@@ -1,0 +1,37 @@
+#ads-table {
+    .el-table{
+        .el-table__header{
+            thead{
+                tr{
+                    th.el-table__cell{
+                        background-color: $header-1;
+                        color: #FFF;
+                        border-right: none;
+                    }
+                    .el-table__cell.is-leaf{
+                        border-bottom: 1px solid #d9d9d9;
+                        border-right: none;
+                    }
+                }
+            }
+        }
+        .el-table__body{
+            tbody{
+                tr.hover-row.current-row>td.el-table__cell, 
+                tr.hover-row>td.el-table__cell{
+                    background-color: transparent !important; 
+                    border-bottom: 1px solid #d9d9d9;
+                    border-right: none !important;
+                }
+                tr.el-table__row.ad-borrado{
+                    opacity: .5;
+                    background-color: $gray-200 !important;
+                }
+                td.el-table__cell{
+                    border-right: none !important;
+                    border-bottom: none !important;
+                }
+            }
+        }
+    }
+}

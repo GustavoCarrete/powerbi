@@ -1,0 +1,154 @@
+// --- Custom SCSS variables ---
+//
+// Clases:
+// - fondos: "bg-{color_name}-{number}"
+// - colores: "{color_name}-{number}"
+//
+// Estilos SCSS: "$color-{color_name}-{number}"
+
+// Colores
+$red-1:    #F45D4C;
+$red-3:    #c15f5f;
+$red-4:    #f7dddd;
+$red-5:    #f56c6c;
+$red-6 :   #ffe6e6;
+$green-1:  #60B99A;
+$green-2:  #34c38f;
+$green-3:  #eef1df;
+$green-4:  #d7efe7;
+$blue-1:   #5b73e8;
+$blue-2:   #e5f0f9;
+$blue-3:   #587cc1;
+$blue-4:   #4b72ad;
+$blue-5:   #4fbce6; 
+$purple-1: #5B527F;
+$purple-2: #6f42c1;
+$pink-1:   #e83e8c;
+$orange-1: #f1734f;
+$yellow-1: #f1b44c;
+$cyan-1:   #50a5f1;
+$gray-1:   #555555;
+$indigo-1: #564ab1;
+$white:    #ffffff;
+$gray-100: #f8f9fa;
+$gray-200: #f5f6f8;
+$gray-300: #f6f6f6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #74788d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000000;
+$header-1: #545c64;
+$header-2: #ffd04b;
+$primary:  $blue-4;
+$secondary: #7ba1db;
+$tertiary: $blue-5;
+$danger-1:  #ff8989;
+$danger-2: $red-5;
+
+:export {
+    red1:    $red-1;
+    red3:    $red-3;
+    red4:    $red-4;
+    red5:    $red-5;
+    red6:    $red-6;
+    green1:  $green-1;
+    green2:  $green-2;
+    green3:  $green-3;
+    green4:  $green-4;
+    blue1:   $blue-1;
+    blue2:   $blue-2;
+    blue3:   $blue-3;
+    blue4:   $blue-4;
+    blue5:   $blue-5;
+    purple1: $purple-1;
+    purple2: $purple-2;
+    pink1:   $pink-1;
+    orange1: $orange-1;
+    yellow1: $yellow-1;
+    cyan1:   $cyan-1;
+    gray1:   $gray-1;
+    indigo1: $indigo-1;
+    white:    $white;
+    gray100: $gray-100;
+    gray200: $gray-200;
+    gray300: $gray-300;
+    gray400: $gray-400;
+    gray500: $gray-500;
+    gray600: $gray-600;
+    gray700: $gray-700;
+    gray800: $gray-800;
+    gray900: $gray-900;
+    black:    $black;
+    header1: $header-1;
+    header2: $header-2;
+    primary: $primary;
+    secondary: $secondary;
+    tertiary: $tertiary;
+    danger1: $danger-1;
+    danger2: $danger-2;
+}
+
+// Mapeo
+$theme-colors: (
+    red-1:    $red-1, 
+    red-3:    $red-3,
+    red-4:    $red-4,
+    red-5:    $red-5,
+    red-6:    $red-6,
+    green-1:  $green-1,
+    green-2:  $green-2,
+    green-3:  $green-3,
+    green-4:  $green-4,
+    blue-1:   $blue-1,
+    blue-2:   $blue-2,
+    blue-3:   $blue-3,
+    blue-4:   $blue-4,
+    blue-5:   $blue-5,
+    purple-1: $purple-1,
+    purple-2: $purple-2,
+    pink-1:   $pink-1,
+    orange-1: $orange-1,
+    yellow-1: $yellow-1,
+    cyan-1:   $cyan-1,
+    gray-1:   $gray-1,
+    indigo-1: $indigo-1,
+    white:    $white,
+    gray-100: $gray-100,
+    gray-200: $gray-200,
+    gray-300: $gray-300,
+    gray-400: $gray-400,
+    gray-500: $gray-500,
+    gray-600: $gray-600,
+    gray-700: $gray-700,
+    gray-800: $gray-800,
+    gray-900: $gray-900,
+    black:    $black,
+    header-1: $header-1,
+    header-2: $header-2,
+    primary: $primary,
+    secondary: $secondary,
+    tertiary: $tertiary,
+    danger-1: $danger-1,
+    danger-2: $danger-2,
+);
+
+// @each itera sobre el map key/value definido
+// $theme-color = key
+// $color = value
+
+@each $theme-color, $color in $theme-colors {
+
+  // Backgrounds
+  .bg-#{$theme-color} {
+    background-color: $color !important;
+  }
+
+  // Colors
+  .#{$theme-color} {
+    color: $color !important;
+  }
+}
+

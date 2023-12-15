@@ -1,0 +1,10 @@
+.el-menu--horizontal.el-menu{
+    /* background-color: $header-1;
+    color: $white; */
+    .el-menu-item{
+        font-weight: bold;
+    }
+    .el-menu-item.is-active{
+        border-bottom-width: 4px;
+    }
+}

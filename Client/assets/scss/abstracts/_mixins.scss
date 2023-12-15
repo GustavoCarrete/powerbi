@@ -1,0 +1,9 @@
+// --- Custom SCSS Mixins ---
+
+@mixin c-pointer{
+    cursor: pointer;
+}
+
+.disabled{
+    pointer-events: none;
+}
