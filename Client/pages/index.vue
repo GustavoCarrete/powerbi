@@ -1,14 +1,7 @@
 <template>
   <div>
-    <b-row>
-      <b-col class="m-5 text-center">
-        <div slot="header" class="clearfix">
-          <h1>Miranda</h1>
-         
-        </div>
-        <div ref="embeddedReport" style="height: 600px;"></div>
-      </b-col>
-    </b-row>
+        <div ref="embeddedReport" style="height: 99vh; width: 99vw;"  ></div>
+     
   </div>
 </template>
 
@@ -21,41 +14,85 @@ export default {
     return {
       config: {
         type: 'report',
-        tokenType: pbi.models.TokenType.Embed,
+        tokenType: 1,
+        permissions:0,
         accessToken: '', // Reemplaza con tu token de acceso
-        embedUrl: 'https://app.powerbi.com/view?r=eyJrIjoiYzAxZTUzMWMtMWQ1ZC00NDk3LWIwNTQtM2QwNzlmYzdkYjgzIiwidCI6IjZhN2JiNjFhLWYwYTYtNGYwYy1iYmM0LWYzNzU1ODJjMjEzZiIsImMiOjl9',       // Reemplaza con tu URL de inserción
-        id: 'bbd0381c-6a75-47b3-8c5a-09a9316abee2',             // Reemplaza con tu ID de informe
-        permissions: pbi.models.Permissions.All,
+        embedUrl: "https://app.powerbi.com/reportEmbed?reportId=b81a8f01-5d06-4665-ae72-9350d784c9b1&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVdFU1QtRVVST1BFLUYtUFJJTUFSWS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldCIsImVtYmVkRmVhdHVyZXMiOnsidXNhZ2VNZXRyaWNzVk5leHQiOnRydWUsImRpc2FibGVBbmd1bGFySlNCb290c3RyYXBSZXBvcnRFbWJlZCI6dHJ1ZX19",
+        id: '',             // Reemplaza con tu ID de informe
+        settings: {
+          panes: {
+                filters: {
+                    visible: true
+                },
+                pageNavigation: {
+                    visible: false
+                }
+            },
+            bars: {
+                statusBar: {
+                    visible: false
+                }
+            }
+        }
       },
 
     };
   },
   created() {
-console.log(powerbi);
+console.log(pbi.models.FilterType);
 
   },
   mounted() {
     this.createToken()
-    //axios.post("http://localhost:3010/prueba").then((resp) => resp.data).catch((error) => { return { status: false } })
   },
   methods: {
     async createToken() {
-      const res = await axios.post("http://localhost:3010/create_acces_token").then((resp) => resp.data).catch((error) => { return { status: false } })
-      console.log(res);
+      const res = await axios.post("http://localhost:3010/create_acces_token")
+      .then((resp) => resp.data).catch((error) => { return { status: false } })
       if (res.status) {
-        this.config.accessToken = res.acces_token
-        const element = this.$refs.embeddedReport;
-        const report = powerbi.embed(element, this.config);
-        report.off('loaded');
-        report.on('loaded', () => {
-          console.log('Informe cargado correctamente');
-        })
-
-        console.log(this.config);
-
+        console.log(res);
+        console.log(res.embed_token);
+        this.config.accessToken = res.embed_token
+       this.config.id = res.idreport
+       this.embedReport()
       } else {
-        console.log("error");
+        console.log("error", res);
       }
+     },
+   async embedReport() {
+      console.log('4');
+      const element = this.$refs.embeddedReport;
+      const report = powerbi.embed(element, this.config);
+
+
+
+     
+     await report.on('loaded',async () => {
+
+
+
+        const filter = {
+    $schema: "http://powerbi.com/product/schema#basic",
+    target: {
+        table: "Comisionistas",
+        column: "ID"
+    },
+    operator: "In",
+    values: [6810]
+};
+
+// Retrieve the page collection and then replace all filters for the active page.
+try {
+  await report.updateFilters(pbi.models.FiltersOperations.Add, [filter]);
+    console.log("Report filter was added.");
+}
+catch (errors) {
+    console.log(errors);
+}
+        
+        console.log('Informe cargado correctamente');
+      });
+
     },
 
   }
