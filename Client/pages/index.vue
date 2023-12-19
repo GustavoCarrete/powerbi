@@ -22,7 +22,7 @@ export default {
         settings: {
           panes: {
                 filters: {
-                    visible: true
+                    visible: false
                 },
                 pageNavigation: {
                     visible: false
@@ -39,7 +39,7 @@ export default {
     };
   },
   created() {
-console.log(pbi.models.FilterType);
+
 
   },
   mounted() {
@@ -50,8 +50,6 @@ console.log(pbi.models.FilterType);
       const res = await axios.post("http://localhost:3010/create_acces_token")
       .then((resp) => resp.data).catch((error) => { return { status: false } })
       if (res.status) {
-        console.log(res);
-        console.log(res.embed_token);
         this.config.accessToken = res.embed_token
        this.config.id = res.idreport
        this.embedReport()
@@ -60,17 +58,10 @@ console.log(pbi.models.FilterType);
       }
      },
    async embedReport() {
-      console.log('4');
       const element = this.$refs.embeddedReport;
       const report = powerbi.embed(element, this.config);
-
-
-
-     
+      //report.off('loaded');
      await report.on('loaded',async () => {
-
-
-
         const filter = {
     $schema: "http://powerbi.com/product/schema#basic",
     target: {
@@ -78,7 +69,7 @@ console.log(pbi.models.FilterType);
         column: "ID"
     },
     operator: "In",
-    values: [6810]
+    values: [6809]
 };
 
 // Retrieve the page collection and then replace all filters for the active page.
